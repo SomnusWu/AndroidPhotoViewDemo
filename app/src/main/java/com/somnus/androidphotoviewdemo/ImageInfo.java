@@ -1,39 +1,34 @@
 package com.somnus.androidphotoviewdemo;
 
+import com.somnus.androidphotoviewdemo.preview.IPreviewUrl;
+
 import java.io.Serializable;
 
 /**
  * ================================================
- * 作    者：廖子尧
- * 版    本：1.0
- * 创建日期：2016/3/21
- * 描    述：
+ * 作    者： Somnus
+ * 版    本： V1.0
+ * 创建日期： 2018年4月8日14:30:06
+ * 描    述：实现 IPreviewUrl getThumbnailUrl
  * 修订历史：
  * ================================================
  */
-public class ImageInfo implements Serializable {
-    public String thumbnailUrl;
-    public String bigImageUrl;
+public class ImageInfo implements Serializable, IPreviewUrl {
+    public String getImagUrl() {
+        return imagUrl;
+    }
+
+    public void setImagUrl(String imagUrl) {
+        this.imagUrl = imagUrl;
+    }
+
+
+    public String imagUrl;
     public int imageViewHeight;
     public int imageViewWidth;
     public int imageViewX;
     public int imageViewY;
 
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
-    }
-
-    public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
-    }
-
-    public String getBigImageUrl() {
-        return bigImageUrl;
-    }
-
-    public void setBigImageUrl(String bigImageUrl) {
-        this.bigImageUrl = bigImageUrl;
-    }
 
     public int getImageViewHeight() {
         return imageViewHeight;
@@ -67,15 +62,11 @@ public class ImageInfo implements Serializable {
         this.imageViewY = imageViewY;
     }
 
+
     @Override
-    public String toString() {
-        return "ImageInfo{" +
-                "imageViewY=" + imageViewY +
-                ", imageViewX=" + imageViewX +
-                ", imageViewWidth=" + imageViewWidth +
-                ", imageViewHeight=" + imageViewHeight +
-                ", bigImageUrl='" + bigImageUrl + '\'' +
-                ", thumbnailUrl='" + thumbnailUrl + '\'' +
-                '}';
+    public String getThumbnailUrl() {
+        return imagUrl;
     }
+
+
 }

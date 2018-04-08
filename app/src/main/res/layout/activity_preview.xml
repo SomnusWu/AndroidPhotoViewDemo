@@ -8,6 +8,7 @@
     <com.somnus.androidphotoviewdemo.preview.HackyViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
+        android:transitionName="img"
         android:layout_height="match_parent"/>
 
     <TextView

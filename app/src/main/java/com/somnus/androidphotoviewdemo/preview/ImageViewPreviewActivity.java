@@ -6,7 +6,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.somnus.androidphotoviewdemo.ImageInfo;
 import com.somnus.androidphotoviewdemo.R;
 
 import java.util.List;
@@ -17,12 +16,12 @@ import java.util.List;
  * @Description:
  */
 
-public class ImageViewPreviewActivity extends AppCompatActivity {
+public class ImageViewPreviewActivity<T> extends AppCompatActivity {
     public static final String IMAGE_INFO = "images";
     public static final String CURRENT_ITEM = "item";
 
-    private ImageViewAdapetr mImageViewAdapetr;
-    private List<ImageInfo> mImageInfos;
+    private ImageViewAdapter mImageViewAdapter;
+    private List<T> mImageInfos;
     private int currentItem;
     private HackyViewPager mHackyViewPager;
     private TextView mTvPage;
@@ -35,12 +34,13 @@ public class ImageViewPreviewActivity extends AppCompatActivity {
         mTvPage = (TextView) findViewById(R.id.tv_pager);
 
         if (getIntent() != null) {
-            mImageInfos = (List<ImageInfo>) getIntent().getSerializableExtra(IMAGE_INFO);
+            mImageInfos = (List<T>) getIntent().getSerializableExtra(IMAGE_INFO);
             currentItem = getIntent().getIntExtra(CURRENT_ITEM, 0);
             mTvPage.setText((currentItem + 1) + "/" + mImageInfos.size());
         }
-        mImageViewAdapetr = new ImageViewAdapetr(this, mImageInfos);
-        mHackyViewPager.setAdapter(mImageViewAdapetr);
+        mImageViewAdapter = new ImageViewAdapter(this, mImageInfos);
+        mHackyViewPager.setAdapter(mImageViewAdapter);
+        mHackyViewPager.setOffscreenPageLimit(mImageInfos.size());
         mHackyViewPager.setCurrentItem(currentItem);
 
         mHackyViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -59,5 +59,10 @@ public class ImageViewPreviewActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void finishAfterTransition() {
+        super.finishAfterTransition();
     }
 }
