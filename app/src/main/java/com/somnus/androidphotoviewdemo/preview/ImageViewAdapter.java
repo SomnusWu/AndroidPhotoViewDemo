@@ -125,9 +125,11 @@ public class ImageViewAdapter<T> extends PagerAdapter implements OnPhotoTapListe
 
     }
 
-    private String getContextText(Object item) {
+    private String getContextText(T item) {
         if (item == null) {
             return "";
+        }else if(item instanceof String){
+            return (String) item;
         } else if (item instanceof IPreviewUrl) {
             return ((IPreviewUrl) item).getThumbnailUrl();
         }
