@@ -19,6 +19,14 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
         google()
+        //本地Maven仓库地址
+//        maven {
+//            url 'file://E://android_deom_workspace_01//AndroidPhotoViewDemo//repository'
+//        }
+        //局域网仓库
+        maven {
+            url 'http://192.168.1.121:8081/nexus/content/repositories/releases/'
+        }
     }
 }
 

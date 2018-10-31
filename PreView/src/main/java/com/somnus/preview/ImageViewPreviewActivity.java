@@ -31,8 +31,6 @@ public class ImageViewPreviewActivity<T> extends AppCompatActivity {
     private TextView mTvPage;
 
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

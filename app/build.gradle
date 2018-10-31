@@ -32,6 +32,8 @@ dependencies {
     //Glide
 //    compile 'jp.wasabeef:glide-transformations:2.0.1'
 
+    implementation 'com.somnus.preview:PreView:1.0.0'
+
     testCompile 'junit:junit:4.12'
-    compile project(path: ':PreView')
+//    compile project(path: ':PreView')
 }
