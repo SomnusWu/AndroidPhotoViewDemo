@@ -1,13 +1,11 @@
 package com.somnus.androidphotoviewdemo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.somnus.androidphotoviewdemo.glideuils.GlideUtils;
-import com.somnus.androidphotoviewdemo.utils.UIHelper;
 import com.somnus.preview.ImageViewPreviewActivity;
 
 import java.util.ArrayList;
@@ -48,33 +46,25 @@ public class MainActivity extends AppCompatActivity {
         mImageView01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startView(mImageView01, 0);
+
+                ImageViewPreviewActivity.startView(MainActivity.this, mlist, mImageView01, 0);
             }
         });
         mImageView02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startView(mImageView02, 1);
+                ImageViewPreviewActivity.startView(MainActivity.this, mlist, mImageView02, 1);
 
             }
         });
         mImageView03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startView(mImageView03, 2);
+                ImageViewPreviewActivity.startView(MainActivity.this, mlist, mImageView03, 2);
             }
         });
     }
 
-    public void startView(View view, int index) {
-
-        Intent intent = new Intent(this, ImageViewPreviewActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(ImageViewPreviewActivity.IMAGE_INFO, mlist);
-        bundle.putInt(ImageViewPreviewActivity.CURRENT_ITEM, index);
-        intent.putExtras(bundle);
-        UIHelper.startActivityOption(MainActivity.this, intent, view, "img");
-    }
 
     @Override
     public void finishAfterTransition() {

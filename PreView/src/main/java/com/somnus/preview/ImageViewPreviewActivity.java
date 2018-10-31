@@ -1,11 +1,17 @@
 package com.somnus.preview;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +29,9 @@ public class ImageViewPreviewActivity<T> extends AppCompatActivity {
     private int currentItem;
     private HackyViewPager mHackyViewPager;
     private TextView mTvPage;
+
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,5 +71,25 @@ public class ImageViewPreviewActivity<T> extends AppCompatActivity {
     @Override
     public void finishAfterTransition() {
         super.finishAfterTransition();
+    }
+
+
+    public static void startView(Context context, ArrayList list, View view, int index) {
+
+        Intent intent = new Intent(context, ImageViewPreviewActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(ImageViewPreviewActivity.IMAGE_INFO, list);
+        bundle.putInt(ImageViewPreviewActivity.CURRENT_ITEM, index);
+        intent.putExtras(bundle);
+        startActivityOption(context, intent, view, "img");
+    }
+
+    public static void startActivityOption(Context context, Intent mIntent, View view, String shareName) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, view, shareName);
+            context.startActivity(mIntent, options.toBundle());
+        } else {
+            context.startActivity(mIntent);
+        }
     }
 }
