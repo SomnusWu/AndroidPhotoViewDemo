@@ -1,12 +1,14 @@
-apply plugin: 'com.android.application'
+//apply plugin: 'com.android.application'
+apply plugin: rootProject.ext.plugins.application
 
 android {
-    compileSdkVersion=26
-    buildToolsVersion='26.0.2'
+//    compileSdkVersion = 27
+//    buildToolsVersion = '26.0.2'
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
-        applicationId "com.somnus.androidphotoviewdemo"
-        minSdkVersion 15
-        targetSdkVersion 25
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -26,9 +28,10 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:27.0.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.github.chrisbanes:PhotoView:2.0.0'
+
     //Glide
 //    compile 'jp.wasabeef:glide-transformations:2.0.1'
-    implementation 'jp.wasabeef:glide-transformations:3.1.1'
+
     testCompile 'junit:junit:4.12'
+    compile project(path: ':PreView')
 }

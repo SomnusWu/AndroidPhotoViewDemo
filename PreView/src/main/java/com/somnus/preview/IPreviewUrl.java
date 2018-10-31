@@ -1,4 +1,4 @@
-package com.somnus.androidphotoviewdemo.preview;
+package com.somnus.preview;
 
 /**
  * Created by Somnus on 2018/4/8.

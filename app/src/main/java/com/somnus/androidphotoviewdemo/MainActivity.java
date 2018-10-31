@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.somnus.androidphotoviewdemo.glideuils.GlideUtils;
-import com.somnus.androidphotoviewdemo.preview.ImageViewPreviewActivity;
 import com.somnus.androidphotoviewdemo.utils.UIHelper;
+import com.somnus.preview.ImageViewPreviewActivity;
 
 import java.util.ArrayList;
 
@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         mImageView01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 startView(mImageView01, 0);
             }
         });
@@ -69,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startView(View view, int index) {
+
         Intent intent = new Intent(this, ImageViewPreviewActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable(ImageViewPreviewActivity.IMAGE_INFO, mlist);

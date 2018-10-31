@@ -1,13 +1,11 @@
-package com.somnus.androidphotoviewdemo.preview;
+package com.somnus.preview;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,16 +18,14 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.DrawableImageViewTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.github.chrisbanes.photoview.OnPhotoTapListener;
 import com.github.chrisbanes.photoview.PhotoView;
-import com.somnus.androidphotoviewdemo.R;
-import com.somnus.androidphotoviewdemo.glideuils.GlideUtils;
 
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
+
 
 /**
  * Created by Somnus on 2017/6/12.
@@ -45,6 +41,8 @@ public class ImageViewAdapter<T> extends PagerAdapter implements OnPhotoTapListe
             .placeholder(R.drawable.ic_default_error)
             .error(R.drawable.ic_default_error)
             .priority(Priority.HIGH);
+
+
 
     public ImageViewAdapter(Context mContext, List<T> data) {
         this.mContext = mContext;
@@ -67,6 +65,7 @@ public class ImageViewAdapter<T> extends PagerAdapter implements OnPhotoTapListe
         imageView.setOnPhotoTapListener(this);
 
         String imageUrl = getContextText(mData.get(position));
+
 
         Glide.with(mContext)
                 .load(imageUrl)
@@ -117,7 +116,7 @@ public class ImageViewAdapter<T> extends PagerAdapter implements OnPhotoTapListe
 //        ((ImageViewPreviewActivity) mContext).finishAfterTransition();
 //        ((ImageViewPreviewActivity) mContext).overridePendingTransition(0, 0);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ((ImageViewPreviewActivity) mContext).finishAfterTransition();
         } else {
             ((ImageViewPreviewActivity) mContext).finish();
@@ -128,7 +127,7 @@ public class ImageViewAdapter<T> extends PagerAdapter implements OnPhotoTapListe
     private String getContextText(T item) {
         if (item == null) {
             return "";
-        }else if(item instanceof String){
+        } else if (item instanceof String) {
             return (String) item;
         } else if (item instanceof IPreviewUrl) {
             return ((IPreviewUrl) item).getThumbnailUrl();

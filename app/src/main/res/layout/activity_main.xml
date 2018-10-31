@@ -21,17 +21,15 @@
         android:id="@+id/iv_img02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        app:layout_constraintLeft_toRightOf="@id/iv_img01"
-        app:layout_constraintTop_toTopOf="@id/iv_img01"
+        app:layout_constraintLeft_toLeftOf="@id/iv_img01"
+        app:layout_constraintTop_toBottomOf="@id/iv_img01"
         tools:src="@drawable/ic_default_error" />
 
     <ImageView
         android:id="@+id/iv_img03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        app:layout_constraintLeft_toRightOf="@id/iv_img02"
-        app:layout_constraintTop_toTopOf="@id/iv_img02"
+        app:layout_constraintLeft_toLeftOf="@id/iv_img01"
+        app:layout_constraintTop_toBottomOf="@id/iv_img02"
         tools:src="@drawable/ic_default_error" />
 </android.support.constraint.ConstraintLayout>

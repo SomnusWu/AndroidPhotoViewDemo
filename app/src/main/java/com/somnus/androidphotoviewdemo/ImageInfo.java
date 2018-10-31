@@ -1,6 +1,7 @@
 package com.somnus.androidphotoviewdemo;
 
-import com.somnus.androidphotoviewdemo.preview.IPreviewUrl;
+
+import com.somnus.preview.IPreviewUrl;
 
 import java.io.Serializable;
 

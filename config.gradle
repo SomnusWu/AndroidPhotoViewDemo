@@ -1,0 +1,32 @@
+ext {
+    plugins = [
+            application              : 'com.android.application',
+            library                  : 'com.android.library',
+            maven                    : 'com.github.dcendents.android-maven',
+            bintray                  : 'com.jfrog.bintray',
+            kotlin_android           : 'kotlin-android',
+            kotlin_android_extensions: 'kotlin-android-extensions'
+    ]
+
+    android = [
+            compileSdkVersion: 26,
+//            buildToolsVersion:'26.0.2',
+            applicationId    : "com.somnus.androidphotoviewdemo",
+            minSdkVersion    : 17,
+            targetSdkVersion : 26,
+            versionCode      : 11,
+            versionName      : "1.2",
+    ]
+
+
+    def supportLibraryVersion = "27.0.2"
+
+    dependencies = [
+            appcompat_v7     : "com.android.support:appcompat-v7:$supportLibraryVersion",
+            glide            : "jp.wasabeef:glide-transformations:3.1.1",
+            constraint_layout: 'com.android.support.constraint:constraint-layout:1.1.2',
+
+
+    ]
+
+}
