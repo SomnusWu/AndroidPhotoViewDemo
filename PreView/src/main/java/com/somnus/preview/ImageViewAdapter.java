@@ -67,16 +67,16 @@ public class ImageViewAdapter<T> extends PagerAdapter implements OnPhotoTapListe
         String imageUrl = getContextText(mData.get(position));
 
 
-        Glide.with(mContext)
-                .load(imageUrl)
-                .apply(options.bitmapTransform(new BlurTransformation(40)))
-                .into(new SimpleTarget<Drawable>() {
-                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-                    @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                        view.setBackground(resource);
-                    }
-                });
+//        Glide.with(mContext)
+//                .load(imageUrl)
+//                .apply(options.bitmapTransform(new BlurTransformation(40)))
+//                .into(new SimpleTarget<Drawable>() {
+//                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+//                    @Override
+//                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+//                        view.setBackground(resource);
+//                    }
+//                });
 
         Glide.with(mContext).load(imageUrl).apply(options).into(new DrawableImageViewTarget(imageView) {
             @Override

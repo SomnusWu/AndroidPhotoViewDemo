@@ -20,9 +20,11 @@ ext {
 
 
     def supportLibraryVersion = "27.0.2"
+//    def supportLibraryVersion = "26.1.0"
 
     dependencies = [
             appcompat_v7     : "com.android.support:appcompat-v7:$supportLibraryVersion",
+//            support_utils    : "com.android.support-core-utils:$supportLibraryVersion",
             glide            : "jp.wasabeef:glide-transformations:3.1.1",
             constraint_layout: 'com.android.support.constraint:constraint-layout:1.1.2',
 

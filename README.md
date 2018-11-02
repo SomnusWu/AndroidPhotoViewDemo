@@ -3,6 +3,9 @@
 implementation 'com.somnus.preview:PreView:1.0.2'
 
 
+ImageViewPreviewActivity.startView(MainActivity.this, mlist, mImageView01, 0);
+
+
 
 ![](https://github.com/SomnusWu/AndroidPhotoViewDemo/blob/master/imags/xx11Cs2.gif)
 

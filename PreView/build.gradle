@@ -1,6 +1,7 @@
 //apply plugin: 'com.android.library'
 apply plugin: rootProject.ext.plugins.library
 apply plugin: 'maven'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -19,6 +20,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false // 即使有报错也不会停止打包
+        checkReleaseBuilds false // 打包Release版本的时候也不进行Lint检测
+    }
 
 }
 
@@ -27,14 +32,13 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
 
     implementation rootProject.ext.dependencies.appcompat_v7
+//    implementation rootProject.ext.dependencies.support_utils
     api rootProject.ext.dependencies.glide
 
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
@@ -50,7 +54,7 @@ dependencies {
 //        repository(url: uri('../repository'))
 //        pom.groupId = "com.somnus.preview"// 唯一标识（通常为模块包名，也可以任意）
 //        pom.artifactId = "PreView" // 项目名称（通常为类库模块名称，也可以任意）
-//        pom.version = "1.0.0" // 版本号
+//        pom.version = "1.0.1" // 版本号
 //    }
 //}
 
@@ -78,7 +82,23 @@ uploadArchives {
             }
             pom.groupId = "com.somnus.preview"// 唯一标识（通常为模块包名，也可以任意）
             pom.artifactId = "PreView" // 项目名称（通常为类库模块名称，也可以任意）
-            pom.version = "1.0.0" // 版本号
+            pom.version = "1.0.2" // 版本号
         }
     }
+}
+
+
+//---------------------------------------外网----------------------
+publish {
+    userOrg = 'somnusid' //bintray账户下某个组织id
+    groupId = 'com.somnus.preview' //maven仓库下库的包名，一般为模块包名
+    artifactId = 'PreView' //项目名称
+    publishVersion = '1.0.2' //版本号
+    desc = 'custom preview for android' //项目介绍，可以不写
+    website = 'https://github.com/SomnusWu/AndroidPhotoViewDemo' //项目主页，可以不写
+
+    bintrayUser = 'x'//bintray 用户名
+    bintrayKey = 'x'//key
+    dryRun = false
+
 }
